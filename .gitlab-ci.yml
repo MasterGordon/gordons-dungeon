@@ -18,4 +18,4 @@ deploy-website:
     - "rm -r .git"
     - "sshpass -V"
     - "export SSHPASS=$USER_PASS"
-    - "sshpass -P 9000 -e scp -o stricthostkeychecking=no -r . root@195.201.164.2:/var/www/html/game"
+    - "sshpass -e scp -o stricthostkeychecking=no -r . root@195.201.164.2:/var/www/html/game"
