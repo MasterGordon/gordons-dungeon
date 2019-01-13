@@ -9,7 +9,7 @@ loadJSFile("./scripts/game.js");
 drawHUD = function() {};
 
 function fail(e) {
-  console.error("\x1b[31m Test " + e + " failed!");
+  console.log("\x1b[31m Test " + e + " failed!");
   failed++;
 };
 
