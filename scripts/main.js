@@ -93,9 +93,10 @@ function loadMobs() {
   })
 }
 
-function checkimageload() {
+async function checkimageload() {
   for (var i = 0; i < allImages.length; i++) {
     if (!allImages[i].complete) {
+      await sleep(1000);
       requestAnimationFrame(checkimageload);
       return;
     }
