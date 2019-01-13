@@ -1,0 +1,2 @@
+testing-javascript:
+  script: "node test.js"
