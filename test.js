@@ -34,7 +34,7 @@ test("initPlayer()", !(player.baseAgi != 10 || player.baseInt != 10 || player.ba
 var testItem = {};
 testItem.str = 10;
 testItem.agi = 15;
-testItem.armor = 4;
+testItem.armor = 3;
 testItem.maxHealth = 4000;
 player.items.push(testItem);
 calcPlayerStats();
