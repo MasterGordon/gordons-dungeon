@@ -28,11 +28,7 @@ function test(e, test) {
 
 //Test if Player gets proper inited
 initPlayer();
-if (player.baseAgi != 10 || player.baseInt != 10 || player.baseStr != 10 || player.level != 1 || player.items.length != 0 || player.xp != 0 || player.gold != 50 || player.baseAttackdamage != 50) {
-  fail("Test failed on initPlayer()");
-} else {
-  pass("")
-}
+test("initPlayer()", !(player.baseAgi != 10 || player.baseInt != 10 || player.baseStr != 10 || player.level != 1 || player.items.length != 0 || player.xp != 0 || player.gold != 50 || player.baseAttackdamage != 50));
 
 //Test if stats are proper calced
 var testItem = {};
@@ -43,22 +39,18 @@ testItem.maxHealth = 4000;
 player.items.push(testItem);
 calcPlayerStats();
 
-if (player.spellamp != 0 || player.damageBlock != 0 || player.maxHealth != 4400 || player.maxMana != 200 || player.armor != 5.5 || player.init != 25 || player.attackdamage != 50 || player.healthRegen != 20 || player.manaRegen != 10 || player.agi != 25 || player.str != 20 || player.int != 10 || player.health != 4400 || player.mana != 200) {
-  fail("calcPlayerStats()");
-} else {
-  pass()
-}
+test("calcPlayerStats()",!(player.spellamp != 0 || player.damageBlock != 0 || player.maxHealth != 4400 || player.maxMana != 200 || player.armor != 5.5 || player.init != 25 || player.attackdamage != 50 || player.healthRegen != 20 || player.manaRegen != 10 || player.agi != 25 || player.str != 20 || player.int != 10 || player.health != 4400 || player.mana != 200));
 
 //-------
 //Summary
 //-------
-console.log("\x1b[47m\x1b[30m ------------------------")
-console.log("\x1b[47m\x1b[30m " + passed + "/" + (passed + failed) + " Tests passed!")
-console.log("\x1b[47m\x1b[30m ------------------------")
+console.log("\x1b[47m\x1b[30m -----------------");
+console.log("\x1b[47m\x1b[30m " + passed + "/" + (passed + failed) + " Tests passed!");
+console.log("\x1b[47m\x1b[30m -----------------\x1b[0m");
 if (failed > 0) {
-  console.log("exitcode: 1")
-  process.exit(1)
+  console.log("exitcode: 1");
+  process.exit(1);
 } else {
-  console.log("exitcode: 0")
-  process.exit(0)
-}
+  console.log("exitcode: 0");
+  process.exit(0);
+};
