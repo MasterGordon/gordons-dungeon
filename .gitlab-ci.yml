@@ -1,2 +1,21 @@
+before_script:
+ - apt-get update -qq && apt-get install -y -qq sshpass
+
+stages:
+  - "test"
+  - "deploy"
+
 testing-javascript:
-  script: "node test.js"
+  stage: "test"
+  script:
+    - "node test.js"
+
+deploy-website:
+  stage: "deploy"
+  script:
+    - "rm test.js"
+    - "rm .gitlab-ci.yml"
+    - "rm -r .git"
+    - "sshpass -V"
+    - "export SSHPASS=$USER_PASS"
+    - "sshpass -p 9000 -e scp -o stricthostkeychecking=no -r . root@195.201.164.2:/var/www/html/game"
