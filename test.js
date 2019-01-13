@@ -1,7 +1,7 @@
 var fs = require('fs');
 var passed = 0;
 var failed = 0;
-
+console.log("")
 function loadJSFile(file) {
   eval.call(global, fs.readFileSync(file) + '');
 };
@@ -34,7 +34,7 @@ test("initPlayer()", !(player.baseAgi != 10 || player.baseInt != 10 || player.ba
 var testItem = {};
 testItem.str = 10;
 testItem.agi = 15;
-testItem.armor = 3;
+testItem.armor = 4;
 testItem.maxHealth = 4000;
 player.items.push(testItem);
 calcPlayerStats();
@@ -44,13 +44,13 @@ test("calcPlayerStats()",!(player.spellamp != 0 || player.damageBlock != 0 || pl
 //-------
 //Summary
 //-------
-console.log("\x1b[47m\x1b[30m -----------------");
-console.log("\x1b[47m\x1b[30m " + passed + "/" + (passed + failed) + " Tests passed!");
-console.log("\x1b[47m\x1b[30m -----------------\x1b[0m");
+console.log("\n \x1b[47m\x1b[30m -----------------\x1b[0m");
+console.log(" \x1b[47m\x1b[30m " + passed + "/" + (passed + failed) + " Tests passed!\x1b[0m");
+console.log(" \x1b[47m\x1b[30m -----------------\x1b[0m\n");
 if (failed > 0) {
-  console.log("exitcode: 1");
+  console.log(" exitcode: 1\n");
   process.exit(1);
 } else {
-  console.log("exitcode: 0");
+  console.log(" exitcode: 0\n");
   process.exit(0);
 };
