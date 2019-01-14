@@ -25,4 +25,8 @@ function centerCanvas() {
     $("#canvas").css("width", "auto");
     $("#canvas").css("left", (window.innerWidth - 1400) / 2);
   }
+  $("#popupcanvas").css("height", $("#canvas").css("height"));
+  $("#popupcanvas").css("top", $("#canvas").css("top"));
+  $("#popupcanvas").css("width", $("#canvas").css("width"));
+  $("#popupcanvas").css("left", $("#canvas").css("left"));
 }

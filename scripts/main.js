@@ -15,13 +15,13 @@ $(function() {
   ctx.fillRect(0, 0, 1400, 900)
   $("#tooltip").hide();
 
-  $("#canvas").mousemove(function(event) {
+  $("#popupcanvas").mousemove(function(event) {
     mx = ((event.pageX - $("#canvas").offset().left) / $("#canvas").width()) * 1400;
     my = ((event.pageY - $("#canvas").offset().top) / $("#canvas").height()) * 900;
     mx = Math.round(mx);
     my = Math.round(my);
   });
-  $("#canvas").mouseleave(function() {
+  $("#popupcanvas").mouseleave(function() {
     mx = -9999;
     my = -9999;
   })

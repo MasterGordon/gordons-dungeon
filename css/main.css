@@ -4,7 +4,12 @@
 }
 
 #canvas {
-  position: absolute;
+  position: fixed;
+}
+
+#popupcanvas {
+  position: fixed;
+  z-index: 100;
 }
 
 .bg-image {
