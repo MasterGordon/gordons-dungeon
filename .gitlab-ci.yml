@@ -14,6 +14,7 @@ deploy-website:
   stage: "deploy"
   script:
     - "rm test.js"
+    - "rm .htaccess"
     - "rm .gitlab-ci.yml"
     - "rm -r .git"
     - "rm ./scripts/libs/livereload.js"
