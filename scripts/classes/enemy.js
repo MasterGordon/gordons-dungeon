@@ -11,7 +11,7 @@ class Enemy {
 class EnemyBat extends Enemy {
   constructor() {
     super();
-    this.init = 10 + stage * 2 * (Math.random() * 0.2 + 1);
+    this.init = 8 + stage * 2 * (Math.random() * 0.2 + 1) + Math.random() * 3;
     this.maxHealth = 300 + stage * 10 * (Math.random() * 0.2 + 1);
     this.maxHealth = Math.round(this.maxHealth)
     this.health = this.maxHealth;
