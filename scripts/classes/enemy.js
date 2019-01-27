@@ -18,7 +18,13 @@ class EnemyBat extends Enemy {
     this.init = Math.round(this.init)
   }
 
-  attack() {
-    player.health -= calcDamage((20 + stage * 4 * (Math.random() * 0.2 + 1)), player.armor, player.damageBlock);
+  async attack() {
+    var dmg = (20 + stage * 4 * (Math.random() * 0.2 + 1));
+    await popup(1400 / 2, 900 / 2, "-" + dmg)
+    player.health -= calcDamage(dmg, player.armor, player.damageBlock);
+  }
+
+  getImage() {
+    return images.mobs["pipo-enemy001"];
   }
 }

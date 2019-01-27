@@ -101,10 +101,18 @@ async function checkimageload() {
       return;
     }
   }
-  console.log('%cFinished loading! ', 'color: darkgreen');
-  isLoading = false;
-  initPlayer();
-  loadTooltips();
+  await sleep(100);
+  fontSpy('PS2P', {
+    success: function() {
+      console.log('%cFinished loading! ', 'color: darkgreen');
+      isLoading = false;
+      initPlayer();
+      loadTooltips();
+    },
+    failure: function() {
+      requestAnimationFrame(checkimageload);
+    }
+  });
 }
 
 var hudTooltips = [];

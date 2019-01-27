@@ -84,7 +84,7 @@ function calcPlayerStats() {
 function calcDamage(damage, armor, block) {
   var effectiveDamage = damage - block;
   var reduction = (-Math.pow(Math.E, (-0.02 * armor)) + 1);
-  effectiveDamage = effectiveDamage * reduction;
+  effectiveDamage = Math.round(effectiveDamage * (1-reduction));
   return effectiveDamage;
 }
 

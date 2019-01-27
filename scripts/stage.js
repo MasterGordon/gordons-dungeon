@@ -4,6 +4,8 @@ var enemies = [];
 var order = [];
 var attackIndex = 0;
 
+var isPlayersTurn = false;
+
 function initStage() {
   enemies = []
   var stageType = Math.round(Math.random() * 0);
@@ -17,20 +19,20 @@ function initStage() {
   attackIndex = enemies.length;
 }
 
-function loopStage() {
+async function loopStage() {
   // Start Calc Attack Order
   if (attackIndex == enemies.length) {
     order = [];
     while (!(order.length == enemies.length + 1)) {
       var current = -1;
       var currentInit = -1;
-      if(order.indexOf("player")==-1){
+      if (order.indexOf("player") == -1) {
         current = "player";
         currentInit = player.init;
       }
-      for(var i=0;i<enemies.length;i++){
-        if(order.indexOf(i)==-1){
-          if(enemies[i].init>currentInit){
+      for (var i = 0; i < enemies.length; i++) {
+        if (order.indexOf(i) == -1) {
+          if (enemies[i].init > currentInit) {
             current = i;
             currentInit = enemies[i].init;
           }
@@ -38,8 +40,21 @@ function loopStage() {
       }
       order.push(current);
     }
+    attackIndex = 0;
   }
   // Finish Calc Attack Order
+
+  // Action Phase
+  var currentActor = order[attackIndex];
+  if (currentActor == "player") {
+    isPlayersTurn = true;
+    //TODO
+  } else {
+    currentActor = enemies[currentActor];
+    await currentActor.attack();
+  }
+  // Finished Attacking Phase
+  attackIndex++;
 }
 
 function finishStage() {
