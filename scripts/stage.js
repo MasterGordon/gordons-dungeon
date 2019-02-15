@@ -14,9 +14,18 @@ function initStage() {
       enemies.push(new EnemyBat())
       enemies.push(new EnemyBat())
       enemies.push(new EnemyBat())
+      enemies.push(new EnemyBat())
+      enemies.push(new EnemyBat())
       break;
   }
   attackIndex = enemies.length;
+}
+
+function drawEnemies() {
+  var abstand = 1400 / enemies.length;
+  for (var i = 0; i < enemies.length; i++) {
+    ctx.drawImage(enemies[i].getImage(), abstand*i+(abstand/2-187.5), 100, 375, 375);
+  }
 }
 
 async function loopStage() {
