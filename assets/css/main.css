@@ -7,6 +7,10 @@
   position: fixed;
 }
 
+.click {
+  cursor: pointer;
+}
+
 #popupcanvas {
   position: fixed;
   z-index: 100;

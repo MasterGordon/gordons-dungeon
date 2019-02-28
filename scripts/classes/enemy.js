@@ -1,8 +1,12 @@
 class Enemy {
-  getTT(){
+  getTT() {
     var tt = "<h1>" + lang.enemies[this.getName()].name + "</h1>";
-    tt += "<p>"+lang.enemies[this.getName()].description + "</p>";
+    tt += "<p>" + lang.enemies[this.getName()].description + "</p>";
     return tt;
+  }
+
+  getHealth() {
+    return formatCount(this.health) + "/" + formatCount(this.maxHealth);
   }
 }
 
@@ -26,7 +30,7 @@ class EnemyBat extends Enemy {
     return images.mobs["pipo-enemy001"];
   }
 
-  getName(){
+  getName() {
     return "bat";
   }
 }

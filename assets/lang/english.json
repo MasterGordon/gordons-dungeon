@@ -1,4 +1,5 @@
 {
+  "numbers": ["","K","M","G","T","P"],
   "str": "Strength",
   "agi": "Agility",
   "int": "Intelligence",

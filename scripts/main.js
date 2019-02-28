@@ -139,13 +139,17 @@ function loadTooltips() {
     for (var i = 0; i < enemies.length; i++) {
       var abstand = 1400 / enemies.length;
       if (mx > abstand * i + (abstand / 2 - 187.5) && mx < abstand * i + (abstand / 2 - 187.5) + 375 && my > 100 && my < 475) {
+        if (isPlayersTurn)
+          $("#popupcanvas").addClass("click");
         $("#tooltip").html(enemies[i].getTT());
         isTooltipVisible = true;
       }
     }
     if (isTooltipVisible)
       $("#tooltip").show();
-    else
+    else {
       $("#tooltip").hide();
+      $("#popupcanvas").removeClass("click");
+    }
   })
 }

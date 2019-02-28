@@ -24,9 +24,13 @@ function initStage() {
 function drawEnemies() {
   ctx.fillStyle = "#000000";
   ctx.fillRect(0, 0, 1400, 510)
+  ctx.fillStyle = "white";
+  ctx.font = "20px PS2P";
+  ctx.textAlign = "center";
   var abstand = 1400 / enemies.length;
   for (var i = 0; i < enemies.length; i++) {
     ctx.drawImage(enemies[i].getImage(), abstand * i + (abstand / 2 - 187.5), 100, 375, 375);
+    ctx.fillText(enemies[i].getHealth(), abstand * i + (abstand / 2 - 187.5) + 375 / 2, 430);
   }
 }
 
@@ -54,7 +58,7 @@ async function loopStage() {
     attackIndex = 0;
   }
   // Finish Calc Attack Order
-
+  drawEnemies();
   // Action Phase
   var currentActor = order[attackIndex];
   if (currentActor == "player") {
