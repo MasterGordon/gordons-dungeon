@@ -22,9 +22,11 @@ function initStage() {
 }
 
 function drawEnemies() {
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, 0, 1400, 510)
   var abstand = 1400 / enemies.length;
   for (var i = 0; i < enemies.length; i++) {
-    ctx.drawImage(enemies[i].getImage(), abstand*i+(abstand/2-187.5), 100, 375, 375);
+    ctx.drawImage(enemies[i].getImage(), abstand * i + (abstand / 2 - 187.5), 100, 375, 375);
   }
 }
 

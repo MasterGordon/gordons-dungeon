@@ -2,6 +2,7 @@ var ctx = {};
 var mx;
 var my;
 var images = {}
+var lang = {}
 images.items = {}
 images.icons = {}
 images.mobs = {}
@@ -39,8 +40,15 @@ $(function() {
     }
   })
   loadImages();
+  loadLang();
   window.setTimeout(checkimageload, 500);
 });
+
+function loadLang() {
+  $.get("./assets/lang/english.json", function(data) {
+    lang = data;
+  })
+}
 
 function loadImages() {
   loadItems();
@@ -58,18 +66,18 @@ function loadImage(path, folder) {
 }
 
 function loadItems() {
-  $.get("./images/items/items.json", function(data) {
+  $.get("./assets/images/items/items.json", function(data) {
     for (var i = 0; i < data.length; i++) {
-      loadImage("./images/items/" + data[i], "items")
+      loadImage("./assets/images/items/" + data[i], "items")
       console.log("Image: " + (i + 1) + "/" + data.length)
     }
   })
 }
 
 function loadIcons() {
-  $.get("./images/icons/icons.json", function(data) {
+  $.get("./assets/images/icons/icons.json", function(data) {
     for (var i = 0; i < data.length; i++) {
-      loadImage("./images/icons/" + data[i], "icons");
+      loadImage("./assets/images/icons/" + data[i], "icons");
       console.log(data[i]);
       console.log("Icon: " + (i + 1) + "/" + data.length)
     }
@@ -77,16 +85,16 @@ function loadIcons() {
 }
 
 function loadMobs() {
-  $.get("./images/monster/monsters.json", function(data) {
+  $.get("./assets/images/monster/monsters.json", function(data) {
     for (var i = 0; i < data.length; i++) {
-      loadImage("./images/monster/" + data[i], "mobs");
+      loadImage("./assets/images/monster/" + data[i], "mobs");
       console.log(data[i]);
       console.log("Mob: " + (i + 1) + "/" + data.length)
     }
   })
-  $.get("./images/bosses/bosses.json", function(data) {
+  $.get("./assets/images/bosses/bosses.json", function(data) {
     for (var i = 0; i < data.length; i++) {
-      loadImage("./images/bosses/" + data[i], "bosses");
+      loadImage("./assets/images/bosses/" + data[i], "bosses");
       console.log(data[i]);
       console.log("Boss: " + (i + 1) + "/" + data.length)
     }
@@ -120,12 +128,19 @@ var isTooltipVisible = false;
 
 function loadTooltips() {
   $("body").mousemove(function(event) {
-    isTooltipVisible = false
+    isTooltipVisible = false;
     for (var i = 0; i < hudTooltips.length; i++) {
       var tt = hudTooltips[i];
       if (mx > tt.x && mx < tt.x + tt.width && my > tt.y && my < tt.y + tt.height) {
         $("#tooltip").html(tt.html);
-        isTooltipVisible = true
+        isTooltipVisible = true;
+      }
+    }
+    for (var i = 0; i < enemies.length; i++) {
+      var abstand = 1400 / enemies.length;
+      if (mx > abstand * i + (abstand / 2 - 187.5) && mx < abstand * i + (abstand / 2 - 187.5) + 375 && my > 100 && my < 475) {
+        $("#tooltip").html(enemies[i].getTT());
+        isTooltipVisible = true;
       }
     }
     if (isTooltipVisible)

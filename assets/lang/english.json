@@ -1,0 +1,25 @@
+{
+  "str": "Strength",
+  "agi": "Agility",
+  "int": "Intelligence",
+  "hp": "Health",
+  "hpregen": "Health Regen",
+  "armor": "Armor",
+  "armorlore": "Reduces the Attack Damage you take",
+  "dmgreduction": "Damage Reduction",
+  "init": "Initiative",
+  "initlore": "Determines the attackers order",
+  "mpregen": "Mana Regen",
+  "mp": "Mana",
+  "ad": "Attack Damage",
+  "spellamp": "Spell Amplification",
+  "spellamplore": "Your Spells deal more Damage",
+  "damageblock": "Damage Block",
+  "damageblocklore": "Incoming Attack Damage is Reduced by this",
+  "enemies": {
+    "bat": {
+      "name": "Bat",
+      "description": "The Bat is just a basic attacker."
+    }
+  }
+}

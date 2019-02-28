@@ -84,7 +84,7 @@ function calcPlayerStats() {
 function calcDamage(damage, armor, block) {
   var effectiveDamage = damage - block;
   var reduction = (-Math.pow(Math.E, (-0.02 * armor)) + 1);
-  effectiveDamage = Math.round(effectiveDamage * (1-reduction));
+  effectiveDamage = Math.round(effectiveDamage * (1 - reduction));
   return effectiveDamage;
 }
 
@@ -105,7 +105,7 @@ function drawHUD() {
     y: (733 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Strength: " + player.str + "</h1><p>1 Strength = 1 Health Regen</p><p>1 Strength = 20 Health</p>"
+    html: "<h1>" + lang.str + ": " + player.str + "</h1><p>1 " + lang.str + " = 1 " + lang.hpregen + "</p><p>1 " + lang.str + " = 20 " + lang.hp + "</p>"
   })
   ctx.fillText("AGI: " + player.agi, 350, 800 + 12.5);
   hudTooltips.push({
@@ -113,7 +113,7 @@ function drawHUD() {
     y: (800 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Agility: " + player.agi + "</h1><p>1 Agility = 1 Initiative</p><p>10 Agility = 1 Armor</p>"
+    html: "<h1>" + lang.agi + ": " + player.agi + "</h1><p>1 " + lang.agi + " = 1 " + lang.init + "</p><p>10 " + lang.agi + " = 1 " + lang.armor + "</p>"
   })
   ctx.fillText("INT: " + player.int, 350, 866 + 12.5);
   hudTooltips.push({
@@ -121,7 +121,7 @@ function drawHUD() {
     y: (866 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Intelligence: " + player.int + "</h1><p>1 Intelligence = 1 Mana Regen</p><p>1 Intelligence = 20 Mana</p>"
+    html: "<h1>" + lang.int + ": " + player.int + "</h1><p>1 " + lang.int + " = 1 " + lang.mpregen + "</p><p>1 " + lang.int + " = 20 " + lang.mp + "</p>"
   })
   ctx.fillText("DAMAGE: " + player.attackdamage, 700, 733 + 12.5);
   hudTooltips.push({
@@ -129,7 +129,7 @@ function drawHUD() {
     y: (733 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Attack Damage: " + player.attackdamage + "</h1>"
+    html: "<h1>" + lang.ad + ": " + player.attackdamage + "</h1>"
   })
   ctx.fillText("SPELL: " + (player.spellamp * 100) + "%", 700, 800 + 12.5);
   hudTooltips.push({
@@ -137,7 +137,7 @@ function drawHUD() {
     y: (800 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Spell Amplification: " + player.spellamp * 100 + "%</h1><p>Your Spells deal more Damage</p>"
+    html: "<h1>" + lang.spellamp + ": " + player.spellamp * 100 + "%</h1><p>" + lang.spellamplore + "</p>"
   })
   ctx.fillText("GOLD: " + player.gold, 700, 866 + 12.5);
   ctx.fillText("ARMOR: " + player.armor, 1050, 733 + 12.5);
@@ -146,7 +146,7 @@ function drawHUD() {
     y: (733 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Armor: " + player.armor + "</h1><p>Reduces the Attack Damage you take</p><p>Damage Reduction: " + Math.round(10000 * (-Math.pow(Math.E, (-0.02 * player.armor)) + 1)) / 100 + "%</p>"
+    html: "<h1>" + lang.armor + ": " + player.armor + "</h1><p>" + lang.armorlore + "</p><p>" + lang.dmgreduction + ": " + Math.round(10000 * (-Math.pow(Math.E, (-0.02 * player.armor)) + 1)) / 100 + "%</p>"
   })
   ctx.fillText("BLOCK: " + player.damageBlock, 1050, 800 + 12.5);
   hudTooltips.push({
@@ -154,7 +154,7 @@ function drawHUD() {
     y: (800 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Damage Block: " + player.damageBlock + "</h1><p>Incoming Attack Damage is Reduced by this</p>"
+    html: "<h1>" + lang.damageblock + ": " + player.damageBlock + "</h1><p>" + lang.damageblocklore + "</p>"
   })
   ctx.fillText("INIT: " + player.init, 1050, 866 + 12.5);
   hudTooltips.push({
@@ -162,7 +162,7 @@ function drawHUD() {
     y: (866 - 12.5),
     height: 25,
     width: 350,
-    html: "<h1>Initiative: " + player.init + "</h1><p>Determines the attackers order</p>"
+    html: "<h1>" + lang.init + ": " + player.init + "</h1><p>" + lang.initlore + "</p>"
   })
 
   //BARS

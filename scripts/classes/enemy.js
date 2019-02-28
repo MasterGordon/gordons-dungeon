@@ -1,10 +1,8 @@
 class Enemy {
-  constructor() {
-
-  }
-
-  attack() {
-
+  getTT(){
+    var tt = "<h1>" + lang.enemies[this.getName()].name + "</h1>";
+    tt += "<p>"+lang.enemies[this.getName()].description + "</p>";
+    return tt;
   }
 }
 
@@ -26,5 +24,9 @@ class EnemyBat extends Enemy {
 
   getImage() {
     return images.mobs["pipo-enemy001"];
+  }
+
+  getName(){
+    return "bat";
   }
 }
