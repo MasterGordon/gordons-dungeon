@@ -81,6 +81,11 @@ function calcPlayerStats() {
   drawHUD();
 }
 
+function getAttack(){
+  var dmg = player.attackdamage;
+  return dmg;
+}
+
 function calcDamage(damage, armor, block) {
   var effectiveDamage = damage - block;
   var reduction = (-Math.pow(Math.E, (-0.02 * armor)) + 1);

@@ -116,6 +116,7 @@ async function checkimageload() {
       isLoading = false;
       initPlayer();
       loadTooltips();
+      loadClick();
     },
     failure: function() {
       requestAnimationFrame(checkimageload);
@@ -152,4 +153,30 @@ function loadTooltips() {
       $("#popupcanvas").removeClass("click");
     }
   })
+}
+
+function loadClick() {
+  $("#popupcanvas").click(async function(event) {
+    for (var i = 0; i < enemies.length; i++) {
+      var abstand = 1400 / enemies.length;
+      if (mx > abstand * i + (abstand / 2 - 187.5) && mx < abstand * i + (abstand / 2 - 187.5) + 375 && my > 100 && my < 475) {
+        if (isPlayersTurn) {
+          playerAttack(i)
+        }
+      }
+    }
+  });
+}
+
+async function playerAttack(i) {
+  isPlayersTurn = false;
+  enemies[i].health -= getAttack();
+  await sleep(300);
+  drawEnemies();
+  if (enemies[i].health <= 0) {
+    enemies.splice(i, 1)
+    await sleep(300);
+    drawEnemies();
+  }
+  loopStage();
 }

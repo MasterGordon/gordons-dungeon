@@ -3,21 +3,8 @@ before_script:
 
 stages:
   - "test"
-  - "deploy"
 
 testing-javascript:
   stage: "test"
   script:
     - "node test.js"
-
-deploy-website:
-  stage: "deploy"
-  script:
-    - "rm test.js"
-    - "rm .htaccess"
-    - "rm .gitlab-ci.yml"
-    - "rm -r .git"
-    - "rm ./scripts/libs/livereload.js"
-    - "sshpass -V"
-    - "export SSHPASS=$USER_PASS"
-    - "sshpass -e scp -o stricthostkeychecking=no -r . root@195.201.164.2:/var/www/html/game"

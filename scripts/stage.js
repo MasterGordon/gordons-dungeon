@@ -13,9 +13,6 @@ function initStage() {
     case 0:
       enemies.push(new EnemyBat())
       enemies.push(new EnemyBat())
-      enemies.push(new EnemyBat())
-      enemies.push(new EnemyBat())
-      enemies.push(new EnemyBat())
       break;
   }
   attackIndex = enemies.length;
@@ -67,6 +64,10 @@ async function loopStage() {
   } else {
     currentActor = enemies[currentActor];
     await currentActor.attack();
+    drawHUD()
+    attackIndex++;
+    loopStage()
+    return;
   }
   // Finished Attacking Phase
   attackIndex++;
